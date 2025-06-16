@@ -1,6 +1,8 @@
+import Container from "./components/utility/Container/Container";
+
 function App() {
   return (
-    <>
+    <Container as="main">
       Collections Men Women About Contact Sneaker Company Fall Limited Edition
       Sneakers These low-profile sneakers are your perfect casual wear
       companion. Featuring a durable rubber outer sole, they’ll withstand
@@ -12,7 +14,7 @@ function App() {
         </a>
         . Coded by <a href="#">Your Name Here</a>.
       </div>
-    </>
+    </Container>
   );
 }
 
