@@ -1,5 +1,9 @@
+import Attribution from "./components/layout/Attribution/Attribution";
 import Carousel from "./components/layout/Carousel/Carousel";
+import AddToCart from "./components/layout/Cart/AddToCart";
 import Header from "./components/layout/Header/Header";
+import ProductInfo from "./components/layout/ProductInfo/ProductInfo";
+import ProductPrice from "./components/layout/ProductPrice/ProductPrice";
 import Container from "./components/utility/Container/Container";
 
 function App() {
@@ -9,19 +13,16 @@ function App() {
       <Container as="main">
         {/*//TODO -  Nav Items */}
         {/* Collections Men Women About Contact  */}
-        <Carousel />
-        Sneaker Company Fall Limited Edition Sneakers These low-profile sneakers
-        are your perfect casual wear companion. Featuring a durable rubber outer
-        sole, they’ll withstand everything the weather can offer. $125.00 50%
-        $250.00 0 Add to cart
-        <div className="attribution">
-          Challenge by{" "}
-          <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">
-            Frontend Mentor
-          </a>
-          . Coded by <a href="#">Your Name Here</a>.
-        </div>
+        <Container>
+          <Carousel />
+        </Container>
+        <Container>
+          <ProductInfo />
+        </Container>
+        <ProductPrice />
+        <AddToCart />
       </Container>
+      <Attribution />
     </>
   );
 }

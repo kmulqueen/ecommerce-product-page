@@ -6,8 +6,12 @@ import Button from "../../utility/Button/Button";
 export default function Carousel() {
   return (
     <Container className="relative">
-      <ProductPicture name="product1" alt="some text" height={300} />
-      <Button className="absolute top-1/2 left-4 -translate-y-1/2 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+      <ProductPicture
+        name="product1"
+        alt="Brown and grey/white showes against an orange and light tan backdrop."
+        className="h-[18.75rem] w-full object-cover"
+      />
+      <Button className="absolute top-1/2 left-4 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg">
         <Icon
           name="previous"
           height={18}
@@ -16,7 +20,7 @@ export default function Carousel() {
         />
       </Button>
 
-      <Button className="absolute top-1/2 right-4 -translate-y-1/2 bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-lg">
+      <Button className="absolute top-1/2 right-4 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg">
         <Icon name="next" height={18} width={18} />
       </Button>
     </Container>
