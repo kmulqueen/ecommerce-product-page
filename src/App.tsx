@@ -11,8 +11,6 @@ function App() {
     <>
       <Header />
       <Container as="main">
-        {/*//TODO -  Nav Items */}
-        {/* Collections Men Women About Contact  */}
         <Container>
           <Carousel />
         </Container>
