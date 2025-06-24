@@ -55,9 +55,14 @@ export default function HamburgerMenuNav({
       onCancel={onClose}
       {...props}
       onClick={handleBackdropClick}
-      className="m-0 h-screen max-h-none w-64 max-w-none border-none p-6 outline-none"
+      className="m-0 h-screen max-h-none w-64 max-w-none border-none p-6 outline-none backdrop:bg-backdrop"
     >
-      <Button onClick={onClose} aria-label="Close menu" className="mb-14">
+      <Button
+        onClick={onClose}
+        aria-label="Close menu"
+        className="mb-14"
+        autoFocus
+      >
         <Icon name="close" width={14} height={14} />
       </Button>
       <Nav onItemClick={onClose} />
