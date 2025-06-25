@@ -23,6 +23,13 @@ export default function Header() {
     setIsCartOpen(false);
   }
 
+  // TODO - Remove this dummy product
+  const dummyProduct = {
+    name: "Fall Limited Edition Sneakers",
+    productPrice: "125.00",
+    quantity: 3,
+  };
+
   return (
     <>
       <Container
@@ -44,7 +51,11 @@ export default function Header() {
         </Container>
       </Container>
       <HamburgerMenuNav isOpen={isMenuOpen} onClose={closeMenu} />
-      <ShoppingCart isOpen={isCartOpen} onClose={closeCart} />
+      <ShoppingCart
+        isOpen={isCartOpen}
+        onClose={closeCart}
+        items={[dummyProduct]}
+      />
     </>
   );
 }
