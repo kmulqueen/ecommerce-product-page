@@ -5,6 +5,7 @@ import Icon from "../../utility/Icon/Icon";
 import ProfilePicture from "../ProfilePicture/ProfilePicture";
 import HamburgerMenuNav from "../HamburgerMenuNav/HamburgerMenuNav";
 import ShoppingCart from "../Cart/ShoppingCart";
+import Badge from "../../utility/Badge/Badge";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -23,12 +24,13 @@ export default function Header() {
     setIsCartOpen(false);
   }
 
-  // TODO - Remove this dummy product
+  // TODO - Remove this dummy product and items.
   const dummyProduct = {
     name: "Fall Limited Edition Sneakers",
     productPrice: "125.00",
     quantity: 3,
   };
+  const items = [dummyProduct];
 
   return (
     <>
@@ -44,18 +46,31 @@ export default function Header() {
           <Icon name="logo" height={20} width={140} />
         </Container>
         <Container className="flex flex-row items-center gap-6">
-          <Button aria-label="View your shopping cart." onClick={toggleCart}>
-            <Icon name="cart" width={22} height={20} />
+          <Button
+            className="relative"
+            aria-label="View your shopping cart."
+            onClick={toggleCart}
+          >
+            {items?.length > 0 && (
+              <Badge
+                numItems={items?.length}
+                screenReaderText={
+                  items?.length === 1 ? " item in cart." : " items in cart."
+                }
+              />
+            )}
+            <Icon
+              name="cart"
+              width={22}
+              height={20}
+              className="[&>path]:fill-grey-950"
+            />
           </Button>
           <ProfilePicture width={32} />
         </Container>
       </Container>
       <HamburgerMenuNav isOpen={isMenuOpen} onClose={closeMenu} />
-      <ShoppingCart
-        isOpen={isCartOpen}
-        onClose={closeCart}
-        items={[dummyProduct]}
-      />
+      <ShoppingCart isOpen={isCartOpen} onClose={closeCart} items={items} />
     </>
   );
 }
