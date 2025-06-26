@@ -30,7 +30,8 @@ export default function CartItem({
           <p className=" text-preset-3-bold text-grey-950">${totalPrice}</p>
         </Container>
       </Container>
-      <Button>
+      {/* // TODO - Add delete functionality to remove items from cart. */}
+      <Button aria-label={`Delete ${quantity} ${name} from cart.`}>
         <Icon name="delete" width={14} height={16} />
       </Button>
     </Container>
