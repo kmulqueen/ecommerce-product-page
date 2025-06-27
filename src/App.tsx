@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Header />
-      <Container as="main">
+      <Container as="main" className="sm:px-20 sm:py-12">
         <Container>
           <Carousel />
         </Container>

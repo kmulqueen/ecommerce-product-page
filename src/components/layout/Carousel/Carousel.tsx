@@ -6,10 +6,11 @@ import Button from "../../utility/Button/Button";
 export default function Carousel() {
   return (
     <Container as="section" className="relative">
+      <h1 className="sr-only">Product pictures carousel.</h1>
       <ProductPicture
         name="product1"
         alt="Brown and grey/white showes against an orange and light tan backdrop."
-        className="h-[18.75rem] w-full object-cover"
+        className="h-[18.75rem] w-full object-cover sm:rounded-2xl"
       />
       <Button
         className="absolute top-1/2 left-4 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-lg"

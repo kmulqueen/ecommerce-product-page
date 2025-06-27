@@ -3,5 +3,7 @@ type ProductTitleProps = {
 };
 
 export default function ProductTitle({ title }: ProductTitleProps) {
-  return <h1 className="text-preset-2 text-grey-950">{title}</h1>;
+  return (
+    <h1 className="text-preset-2 text-grey-950 sm:text-preset-1">{title}</h1>
+  );
 }

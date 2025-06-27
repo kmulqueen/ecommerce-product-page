@@ -7,9 +7,9 @@ export default function ProductPrice() {
   return (
     <Container
       as="section"
-      className="flex flex-row items-center justify-between px-6 mb-8"
+      className="mb-8 flex flex-row items-center justify-between px-6 sm:mb-6 sm:flex-col sm:items-start sm:gap-4 sm:px-0"
     >
-      <Container className="flex flex-row items-center gap-4">
+      <Container className="flex flex-row items-center gap-4 sm:gap-6">
         <Price price="$125.00" />
         <Discount discount="50%" />
       </Container>

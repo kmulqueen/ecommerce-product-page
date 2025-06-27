@@ -5,7 +5,11 @@ import ProductTitle from "./ProductTitle";
 
 export default function ProductInfo() {
   return (
-    <Container as="section" className="flex flex-col gap-4 px-6 pt-6 mb-8">
+    <Container
+      as="section"
+      className="mb-8 flex flex-col gap-4 px-6 pt-6 sm:mb-6 sm:gap-6 sm:px-0 sm:pt-12"
+    >
+      <h1 className="sr-only">Product Description</h1>
       <CompanyName companyName="Sneaker Company" />
       <ProductTitle title="Fall Limited Edition Sneakers" />
       <ProductDescription

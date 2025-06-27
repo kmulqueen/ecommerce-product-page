@@ -36,7 +36,7 @@ export default function Header() {
     <>
       <Container
         as="header"
-        className="flex flex-row justify-between items-center p-6"
+        className="relative flex flex-row items-center justify-between p-6 sm:px-20 sm:py-8 sm:before:absolute sm:before:right-20 sm:before:bottom-0 sm:before:left-20 sm:before:h-0.5 sm:before:bg-grey-50"
       >
         <Container className="flex flex-row items-center gap-6">
           {/*// TODO - Change from hamburger menu to list on desktop/larger viewports  */}
@@ -45,7 +45,7 @@ export default function Header() {
           </Button>
           <Icon name="logo" height={20} width={140} />
         </Container>
-        <Container className="flex flex-row items-center gap-6">
+        <Container className="flex flex-row items-center gap-6 sm:gap-10">
           <Button
             className="relative"
             aria-label="View your shopping cart."
@@ -66,7 +66,7 @@ export default function Header() {
               className="[&>path]:fill-grey-950"
             />
           </Button>
-          <ProfilePicture width={32} />
+          <ProfilePicture />
         </Container>
       </Container>
       <HamburgerMenuNav isOpen={isMenuOpen} onClose={closeMenu} />
