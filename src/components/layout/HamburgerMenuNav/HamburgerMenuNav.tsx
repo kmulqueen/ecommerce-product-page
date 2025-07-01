@@ -55,7 +55,7 @@ export default function HamburgerMenuNav({
       onCancel={onClose}
       {...props}
       onClick={handleBackdropClick}
-      className="m-0 h-screen max-h-none w-64 max-w-none border-none p-6 outline-none backdrop:bg-backdrop"
+      className="m-0 h-screen max-h-none w-64 max-w-none border-none p-6 outline-none backdrop:bg-backdrop sm:w-80 sm:px-20 sm:py-12"
     >
       <Button
         onClick={onClose}

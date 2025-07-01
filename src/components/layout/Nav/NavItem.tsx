@@ -24,7 +24,7 @@ export default function NavItem({
       <a
         href={location}
         onClick={handleClick}
-        className="block py-3 text-preset-3-bold text-grey-950 capitalize hover:mb-[-2px] hover:border-b-2 hover:border-b-orange-500 focus:mb-[-2px] focus:border-b-2 focus:border-b-orange-500"
+        className="block py-3 text-preset-3-bold text-grey-950 capitalize hover:mb-[-2px] hover:border-b-2 hover:border-b-orange-500 focus:mb-[-2px] focus:border-b-2 focus:border-b-orange-500 sm:py-6"
       >
         {name}
       </a>

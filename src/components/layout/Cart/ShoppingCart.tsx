@@ -31,7 +31,7 @@ export default function ShoppingCart({
       as="dialog"
       ref={dialogRef}
       onCancel={onClose}
-      className="z-10 m-0 mt-2 w-[90vw] max-w-[22.5rem] min-w-72 place-self-center rounded-lg border-none outline-none"
+      className="z-10 m-0 mt-2 w-[90vw] max-w-[22.5rem] min-w-72 place-self-center rounded-lg border-none shadow-md outline-none sm:mt-[-1rem] sm:mr-8 sm:place-self-end"
     >
       <Container className="flex flex-row justify-between px-4 py-6">
         <h2 className="text-preset-3-bold text-grey-950">Cart</h2>
