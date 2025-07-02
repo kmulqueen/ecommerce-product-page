@@ -3,9 +3,13 @@ import Icon from "../../utility/Icon/Icon";
 import ProductPicture from "../ProductPicture/ProductPicture";
 import Button from "../../utility/Button/Button";
 
-export default function Carousel() {
+type CarouselProps = {
+  className: string;
+};
+
+export default function Carousel({ className }: CarouselProps) {
   return (
-    <Container as="section" className="relative">
+    <Container as="section" className={`relative ${className}`}>
       <h1 className="sr-only">Product pictures carousel.</h1>
       <ProductPicture
         name="product1"

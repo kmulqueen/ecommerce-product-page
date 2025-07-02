@@ -17,7 +17,7 @@ export default function AddToCart() {
   return (
     <Container
       as="section"
-      className="grid px-6 gap-y-4 sm:grid-cols-2 sm:px-0 sm:gap-x-2"
+      className="grid gap-y-4 px-6 sm:grid-cols-2 sm:gap-x-2 sm:px-0 xl:grid-cols-[1fr_2fr]"
     >
       <h1 className="sr-only">Adjust quantity of items to add to cart</h1>
       <Container className="flex flex-row items-center justify-between rounded-[10px] bg-grey-50 p-4">

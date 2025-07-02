@@ -37,7 +37,7 @@ export default function Header() {
     <>
       <Container
         as="header"
-        className="relative flex flex-row items-center justify-between p-6 sm:px-20 sm:py-8 sm:before:absolute sm:before:right-20 sm:before:bottom-0 sm:before:left-20 sm:before:h-0.5 sm:before:bg-grey-50"
+        className="relative flex flex-row items-center justify-between p-6 sm:px-20 sm:py-8 sm:before:absolute sm:before:right-20 sm:before:bottom-0 sm:before:left-20 sm:before:h-0.5 sm:before:bg-grey-50 xl:px-44 xl:before:right-44 xl:before:left-44"
       >
         <Container className="flex flex-row items-center gap-6 lg:gap-16">
           {/*// TODO - Change from hamburger menu to list on desktop/larger viewports  */}

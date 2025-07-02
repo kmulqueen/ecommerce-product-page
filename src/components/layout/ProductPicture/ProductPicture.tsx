@@ -8,7 +8,7 @@ import product4Thumbnail from "../../../assets/images/image-product-4-thumbnail.
 import product4 from "../../../assets/images/image-product-4.jpg";
 import { type ComponentProps } from "react";
 
-const pictures = {
+export const pictures = {
   product1: product1,
   product1Thumbnail: product1Thumbnail,
   product2: product2,
@@ -19,9 +19,9 @@ const pictures = {
   product4Thumbnail: product4Thumbnail,
 } as const;
 
-type PictureName = keyof typeof pictures;
+export type PictureName = keyof typeof pictures;
 
-interface ProductPictureProps extends ComponentProps<"img"> {
+export interface ProductPictureProps extends ComponentProps<"img"> {
   name: PictureName;
   alt: string;
 }
