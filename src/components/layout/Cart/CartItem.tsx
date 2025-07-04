@@ -11,7 +11,7 @@ export default function CartItem({
   productPrice,
   quantity,
 }: CartItemProps) {
-  const totalPrice = (quantity * parseFloat(productPrice)).toFixed(2);
+  const totalPrice = quantity * productPrice;
   return (
     <Container as="li" className="flex items-center justify-between">
       <ProductPicture
@@ -25,9 +25,11 @@ export default function CartItem({
         <p className=" text-preset-3-regular text-grey-500">{name}</p>
         <Container className="flex gap-2">
           <p className=" text-preset-3-regular text-grey-500">
-            ${productPrice} x {quantity}
+            ${productPrice.toFixed(2)} x {quantity}
           </p>
-          <p className=" text-preset-3-bold text-grey-950">${totalPrice}</p>
+          <p className=" text-preset-3-bold text-grey-950">
+            ${totalPrice.toFixed(2)}
+          </p>
         </Container>
       </Container>
       {/* // TODO - Add delete functionality to remove items from cart. */}

@@ -2,9 +2,21 @@ import { useState } from "react";
 import Container from "../../utility/Container/Container";
 import Icon from "../../utility/Icon/Icon";
 import Button from "../../utility/Button/Button";
+import { useAppDispatch } from "../../../hooks/hooks";
+import {
+  addProductsToCart,
+  type Product,
+} from "../../../features/cart/cartSlice";
 
-export default function AddToCart() {
+type AddToCartProps = {
+  productName: string;
+  price: number;
+};
+
+export default function AddToCart({ productName, price }: AddToCartProps) {
+  const dispatch = useAppDispatch();
   const [quantity, setQuantity] = useState(0);
+
   function handleUpdateQuantity(action: string) {
     if (action === "add") {
       setQuantity((prevState) => prevState + 1);
@@ -13,6 +25,16 @@ export default function AddToCart() {
         setQuantity((prevState) => prevState - 1);
       }
     }
+  }
+
+  function handleAddToCart() {
+    const product: Product = {
+      productName: productName,
+      quantity: quantity,
+      price: price,
+    };
+
+    dispatch(addProductsToCart(product));
   }
   return (
     <Container
@@ -41,6 +63,7 @@ export default function AddToCart() {
       <Button
         className="flex flex-row items-center justify-center gap-4 rounded-[10px] bg-orange-500 py-4 text-preset-3-bold text-grey-950"
         aria-label={`Add ${quantity} of this product to your shopping cart.`}
+        onClick={handleAddToCart}
       >
         <Icon
           name="cart"

@@ -1,30 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import type { Action } from "@reduxjs/toolkit";
-
-interface Product {
-  productName: string;
-  quantity: number;
-}
-
-interface ShoppingCartState {
-  products: Product[];
-  total: number;
-}
-
-function shoppingCartReducer(
-  state: ShoppingCartState = { products: [], total: 0 },
-  action: Action
-) {
-  switch (action.type) {
-    default: {
-      return state;
-    }
-  }
-}
+import cartReducer from "../features/cart/cartSlice";
 
 export const store = configureStore({
   reducer: {
-    shoppingCart: shoppingCartReducer,
+    cart: cartReducer,
   },
 });
 

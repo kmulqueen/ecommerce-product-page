@@ -3,20 +3,26 @@ import CompanyName from "./CompanyName";
 import ProductDescription from "./ProductDescription";
 import ProductTitle from "./ProductTitle";
 
-export default function ProductInfo() {
+type ProductInfoProps = {
+  productName: string;
+  company: string;
+  description: string;
+};
+
+export default function ProductInfo({
+  productName,
+  company,
+  description,
+}: ProductInfoProps) {
   return (
     <Container
       as="section"
       className="mb-8 flex flex-col gap-4 px-6 pt-6 sm:mb-6 sm:gap-6 sm:px-0 sm:pt-12"
     >
       <h1 className="sr-only">Product Description</h1>
-      <CompanyName companyName="Sneaker Company" />
-      <ProductTitle title="Fall Limited Edition Sneakers" />
-      <ProductDescription
-        description="These low-profile sneakers are your perfect casual wear companion.
-      Featuring a durable rubber outer sole, they’ll withstand everything the
-      weather can offer."
-      />
+      <CompanyName companyName={company} />
+      <ProductTitle title={productName} />
+      <ProductDescription description={description} />
     </Container>
   );
 }

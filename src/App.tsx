@@ -6,8 +6,19 @@ import Header from "./components/layout/Header/Header";
 import ProductInfo from "./components/layout/ProductInfo/ProductInfo";
 import ProductPrice from "./components/layout/ProductPrice/ProductPrice";
 import Container from "./components/utility/Container/Container";
+import type { ProductFull } from "./types/product";
 
 function App() {
+  //* Product data would be fetched from some API/DB. This is just for demo purposes.
+  const product: ProductFull = {
+    name: "Fall Limited Edition Sneakers",
+    company: "Sneaker Company",
+    description:
+      "These low-profile sneakers are your perfect casual wear companion. Featuring a durable rubber outer sole, they’ll withstand everything theweather can offer.",
+    productPrice: 125.0,
+    originalPrice: 250.0,
+    discount: "50%",
+  };
   return (
     <>
       <Header />
@@ -20,9 +31,17 @@ function App() {
           <Gallery className="hidden lg:block" />
         </Container>
         <Container>
-          <ProductInfo />
-          <ProductPrice />
-          <AddToCart />
+          <ProductInfo
+            productName={product.name}
+            company={product.company}
+            description={product.description}
+          />
+          <ProductPrice
+            price={product.productPrice}
+            originalPrice={product.originalPrice}
+            discount={product.discount}
+          />
+          <AddToCart productName={product.name} price={product.productPrice} />
         </Container>
       </Container>
       <Attribution />

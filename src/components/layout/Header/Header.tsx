@@ -7,10 +7,17 @@ import HamburgerMenuNav from "../HamburgerMenuNav/HamburgerMenuNav";
 import ShoppingCart from "../Cart/ShoppingCart";
 import Badge from "../../utility/Badge/Badge";
 import Nav from "../Nav/Nav";
+import { useAppSelector } from "../../../hooks/hooks";
 
 export default function Header() {
+  const products = useAppSelector((state) => state.cart.products);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+
+  const totalItems: number = products.reduce(
+    (total, product) => total + product.quantity,
+    0
+  );
 
   function toggleMenu() {
     setIsMenuOpen((prevState) => !prevState);
@@ -25,14 +32,6 @@ export default function Header() {
     setIsCartOpen(false);
   }
 
-  // TODO - Remove this dummy product and items.
-  const dummyProduct = {
-    name: "Fall Limited Edition Sneakers",
-    productPrice: "125.00",
-    quantity: 3,
-  };
-  const items = [dummyProduct];
-
   return (
     <>
       <Container
@@ -40,7 +39,6 @@ export default function Header() {
         className="relative flex flex-row items-center justify-between p-6 sm:px-20 sm:py-8 sm:before:absolute sm:before:right-20 sm:before:bottom-0 sm:before:left-20 sm:before:h-0.5 sm:before:bg-grey-50 xl:px-44 xl:before:right-44 xl:before:left-44"
       >
         <Container className="flex flex-row items-center gap-6 lg:gap-16">
-          {/*// TODO - Change from hamburger menu to list on desktop/larger viewports  */}
           <Button
             aria-label="Open the navigation menu."
             onClick={toggleMenu}
@@ -57,11 +55,11 @@ export default function Header() {
             aria-label="View your shopping cart."
             onClick={toggleCart}
           >
-            {items?.length > 0 && (
+            {totalItems > 0 && (
               <Badge
-                numItems={items?.length}
+                numItems={totalItems}
                 screenReaderText={
-                  items?.length === 1 ? " item in cart." : " items in cart."
+                  totalItems === 1 ? " item in cart." : " items in cart."
                 }
               />
             )}
@@ -76,7 +74,7 @@ export default function Header() {
         </Container>
       </Container>
       <HamburgerMenuNav isOpen={isMenuOpen} onClose={closeMenu} />
-      <ShoppingCart isOpen={isCartOpen} onClose={closeCart} items={items} />
+      <ShoppingCart isOpen={isCartOpen} onClose={closeCart} />
     </>
   );
 }

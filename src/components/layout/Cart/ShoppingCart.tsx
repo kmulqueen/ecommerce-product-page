@@ -1,22 +1,18 @@
 import { useRef, useEffect } from "react";
-import type { Product } from "../../../types/product";
+import { useAppSelector } from "../../../hooks/hooks";
 import Container from "../../utility/Container/Container";
 import Button from "../../utility/Button/Button";
 import Icon from "../../utility/Icon/Icon";
 import CartItem from "./CartItem";
 
 type ShoppingCartProps = {
-  items?: Product[];
   isOpen: boolean;
   onClose: () => void;
 };
 
-export default function ShoppingCart({
-  items,
-  isOpen,
-  onClose,
-}: ShoppingCartProps) {
+export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
+  const items = useAppSelector((state) => state.cart.products);
 
   useEffect(() => {
     if (isOpen) {
@@ -41,7 +37,7 @@ export default function ShoppingCart({
       </Container>
       <hr className="border-grey-100" />
 
-      {!items?.length ? (
+      {!items.length ? (
         <Container className="grid h-[60%]">
           <p className="place-self-center text-preset-3-bold text-grey-500">
             Your cart is empty.
@@ -52,10 +48,10 @@ export default function ShoppingCart({
           <Container as="ul" className="list-none">
             {items.map((item) => (
               <CartItem
-                key={item.name}
-                name={item.name}
+                key={item.productName}
+                name={item.productName}
                 quantity={item.quantity}
-                productPrice={item.productPrice}
+                productPrice={item.price}
               />
             ))}
           </Container>
