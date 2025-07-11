@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
+import { existsIndex } from "../../utilities/findProductByName";
 
 export interface Product {
   productName: string;
@@ -22,13 +23,14 @@ const cartSlice = createSlice({
   reducers: {
     addProductsToCart(state, action: PayloadAction<Product>) {
       // Check state.products for product name.
-      const existsIndex: number = state.products.findIndex(
-        (product) => product.productName == action.payload.productName
+      const productExists: number = existsIndex(
+        state.products,
+        action.payload.productName
       );
 
       // If the product name exists, then just update the quantity of that specific product
-      if (existsIndex !== -1) {
-        state.products[existsIndex].quantity += action.payload.quantity;
+      if (productExists !== -1) {
+        state.products[productExists].quantity += action.payload.quantity;
       } else {
         state.products.push(action.payload);
       }
@@ -36,9 +38,27 @@ const cartSlice = createSlice({
       // Update total
       state.total += action.payload.price * action.payload.quantity;
     },
-    // TODO - Remove items from cart.
+    removeProductsFromCart(state, action: PayloadAction<Product>) {
+      // Check state.products for product name.
+      const productExists: number = existsIndex(
+        state.products,
+        action.payload.productName
+      );
+
+      // If the product name exists, update cart total and remove whole quantity of items from cart.
+      if (productExists !== -1) {
+        // Update total
+        state.total =
+          state.total -
+          state.products[productExists].price *
+            state.products[productExists].quantity;
+
+        // Remove product from cart
+        state.products.splice(productExists, 1);
+      }
+    },
   },
 });
 
-export const { addProductsToCart } = cartSlice.actions;
+export const { addProductsToCart, removeProductsFromCart } = cartSlice.actions;
 export default cartSlice.reducer;

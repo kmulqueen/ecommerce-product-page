@@ -49,9 +49,9 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
             {items.map((item) => (
               <CartItem
                 key={item.productName}
-                name={item.productName}
+                productName={item.productName}
                 quantity={item.quantity}
-                productPrice={item.price}
+                price={item.price}
               />
             ))}
           </Container>
