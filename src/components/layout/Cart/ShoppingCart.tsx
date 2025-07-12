@@ -27,7 +27,7 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
       as="dialog"
       ref={dialogRef}
       onCancel={onClose}
-      className="z-10 m-0 mt-2 w-[90vw] max-w-[22.5rem] min-w-72 place-self-center rounded-lg border-none shadow-md outline-none sm:mt-[-1rem] sm:mr-8 sm:place-self-end"
+      className="z-10 m-0 mt-2 min-h-64 w-[90vw] max-w-[22.5rem] min-w-72 place-self-center rounded-lg border-none shadow-md outline-none sm:mt-[-1rem] sm:mr-8 sm:place-self-end"
     >
       <Container className="flex flex-row justify-between px-4 py-6">
         <h2 className="text-preset-3-bold text-grey-950">Cart</h2>
@@ -38,13 +38,13 @@ export default function ShoppingCart({ isOpen, onClose }: ShoppingCartProps) {
       <hr className="border-grey-100" />
 
       {!items.length ? (
-        <Container className="grid h-[60%]">
+        <Container className="grid h-[calc(16rem-4.625rem)] py-6">
           <p className="place-self-center text-preset-3-bold text-grey-500">
             Your cart is empty.
           </p>
         </Container>
       ) : (
-        <Container className="flex flex-col gap-6 px-4 py-6">
+        <Container className="flex flex-col gap-6 px-4 sm:px-6 py-6">
           <Container as="ul" className="list-none">
             {items.map((item) => (
               <CartItem
