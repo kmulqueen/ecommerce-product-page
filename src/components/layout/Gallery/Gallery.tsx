@@ -1,10 +1,11 @@
+import { useSelector, useDispatch } from "react-redux";
 import Button from "../../utility/Button/Button";
 import Container from "../../utility/Container/Container";
-import ProductPicture, {
-  type ProductPictureProps,
-} from "../ProductPicture/ProductPicture";
+import ProductPicture from "../ProductPicture/ProductPicture";
 import { pictures } from "../ProductPicture/ProductPicture";
 import { type PictureName } from "../ProductPicture/ProductPicture";
+import { selectPictureByName } from "../../../features/picture/pictureSlice";
+import { type RootState } from "../../../store/store";
 
 const options = (Object.keys(pictures) as Array<PictureName>)
   .filter((key) => key.endsWith("Thumbnail"))
@@ -15,17 +16,18 @@ const options = (Object.keys(pictures) as Array<PictureName>)
 
 type GalleryProps = {
   className: string;
-  selectedPicture?: ProductPictureProps;
-  pictureOptions?: ProductPictureProps[];
 };
 
-export default function Gallery({
-  className,
-  selectedPicture = {
-    name: "product1",
-    alt: "Brown and grey/white showes against an orange and light tan backdrop.",
-  },
-}: GalleryProps) {
+export default function Gallery({ className }: GalleryProps) {
+  const dispatch = useDispatch();
+  const selectedPicture = useSelector(
+    (state: RootState) => state.picture.selectedPicture
+  );
+
+  const handleThumbnailClick = (thumbnailName: PictureName) => {
+    dispatch(selectPictureByName(thumbnailName));
+  };
+
   return (
     <Container
       as="section"
@@ -39,7 +41,10 @@ export default function Gallery({
       />
       <Container className="items-center justify-between lg:flex">
         {options.map((picture) => (
-          <Button key={picture.name}>
+          <Button
+            key={picture.name}
+            onClick={() => handleThumbnailClick(picture.name)}
+          >
             <ProductPicture
               name={picture.name}
               alt={picture.alt}
